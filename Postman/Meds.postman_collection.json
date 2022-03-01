@@ -9,7 +9,23 @@
 			"name": "Get",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/meds?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meds"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -20,7 +36,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"client\": \"1\",\r\n    \"name\":\"Buscopan2\",\r\n    \"time\":\"12:00\",\r\n    \"repeat\":2\r\n}",
+					"raw": "{\r\n    \"client\": \"1\",\r\n    \"name\":\"Buscopan\",\r\n    \"time\":\"12:00\",\r\n    \"repeat\":2,\r\n    \"startDate\":\"18/02/2022\",\r\n    \"endDate\":\"25/02/2022\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -43,8 +59,24 @@
 		{
 			"name": "Remove",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/meds?id=621011dd1bdedf703defb0c4",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meds"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "621011dd1bdedf703defb0c4"
+						}
+					]
+				}
 			},
 			"response": []
 		}

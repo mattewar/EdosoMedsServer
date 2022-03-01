@@ -7,15 +7,22 @@ const connectionString = 'mongodb+srv://edoso:edoso@cluster0.tgkx6.mongodb.net/m
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
-        console.log('Connected to Database')
         const db = client.db('edoso')
         const medsCollection = db.collection('medicines')
 
         app.use(bodyParser.json())
         app.use(bodyParser.urlencoded({ extended: true }))
+        app.use(function(req, res, next) {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+            res.header(
+              'Access-Control-Allow-Headers',
+              'Origin, X-Requested-With, Content-Type, Accept'
+            );
+            next();
+          });
 
         app.get('/meds', (req, res) => {
-            console.log(req.query.id)
             medsCollection.find({client:req.query.id}).toArray()
                 .then(results => {
                     res.send(results);
@@ -26,7 +33,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         app.post('/meds', (req, res) => {
             medsCollection.insertOne(req.body)
                 .then(result => {
-                    console.log(result)
                     res.sendStatus(201)
                 })
                 .catch(error => console.error(error))
@@ -34,10 +40,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
         app.delete('/meds', (req, res) => {
             medsCollection.deleteOne(
-                { _id: new mongodb.ObjectId(req.body.id) }
+                { _id: new mongodb.ObjectId(req.query.id) }
             ).then(
                 result => {
-                    console.log(result)
                     res.sendStatus(200)
                 }
             )
