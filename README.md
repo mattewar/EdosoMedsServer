@@ -1,11 +1,12 @@
-Para instalar as dependencias rodar
-```
-npm install
-```
+# Aplicação Web do aplicativo E-doso
 
-Para executar o projeto rodar
-```
-npm run dev
-```
+Esse é o repositório da aplicação web do aplicativo E-DOSO, desenvolvido como Trabalho de Conclusão de Curso, do curso de Análise e Desenvolvimento de Sistemas da Universidade Federal do Paraná
 
-Exemplos das requisições podem ser achados na collection do postman
+### Requisitos para instalação
+    - npm
+
+### Rode o projeto
+    
+    npm run dev
+    
+Os exemplos das requisições podem ser achados na collection do Postman
